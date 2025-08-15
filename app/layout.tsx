@@ -3,6 +3,11 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import "./globals.css"
+import { ThemeProvider } from "@/components/theme-provider"
+import { PWAInstallPrompt } from "@/components/pwa-install-prompt"
+import { NotificationManager } from "@/components/notification-manager"
+import { LanguageProvider } from "@/components/language-provider"
+import { VoiceCommands } from "@/components/voice-commands"
 
 export const metadata: Metadata = {
   title: "SLERF - The Chillest Sloth Token on Base Chain | Buy $SLERF",
@@ -61,6 +66,7 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   generator: "v0.app",
+  manifest: "/manifest.json",
 }
 
 export default function RootLayout({
@@ -69,7 +75,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -111,7 +117,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#3b82f6" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="SLERF" />
 
         <style>{`
 html {
@@ -121,7 +131,16 @@ html {
 }
         `}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <LanguageProvider>
+            <NotificationManager />
+            <PWAInstallPrompt />
+            <VoiceCommands />
+            {children}
+          </LanguageProvider>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
