@@ -1,0 +1,22 @@
+{
+  "name": "SLERF Token",
+  "short_name": "SLERF",
+  "description": "The chillest sloth token on Base chain",
+  "icons": [
+    {
+      "src": "/slerf-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/slerf-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#3b82f6",
+  "background_color": "#1e40af",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}
