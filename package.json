@@ -76,7 +76,7 @@
     "node-cron": "^3.0.3",
     "rate-limiter-flexible": "latest",
     "react": "^19",
-    "react-day-picker": "9.8.0",
+    "react-day-picker": "9.8.1",
     "react-dom": "^19",
     "react-hook-form": "^7.60.0",
     "react-resizable-panels": "^2.1.7",
